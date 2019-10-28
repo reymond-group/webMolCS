@@ -1,0 +1,3 @@
+OC1=C([O-])C(=CC(=C1)C([O-])=O)N(=O)=O 162-CHEMBL170549-comt 0.02
+OC1=C([O-])C(=CC(=C1)N(=O)=O)N(=O)=O 188-CHEMBL168276-comt 0.02
+CC(=O)C1=CC(O)=C([O-])C(=C1)N(=O)=O 197-CHEMBL169033-comt 0.02

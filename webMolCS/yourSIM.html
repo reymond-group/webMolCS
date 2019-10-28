@@ -1,0 +1,213 @@
+<head>
+		<link rel="shortcut icon"  href="1.ico"/>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+                
+		<title>SIMmap</title>
+		<style>
+
+		html, body {
+			height: 100%;
+		}
+
+		body {
+			background-color: #000000;
+			margin: 0;
+			font-family: Arial;
+			#overflow: hidden;
+		}
+
+		a {
+			color: #ffffff;
+		}
+
+		#info {
+			top: 10px;
+			position: absolute;
+			width: 100%;
+			color: #ffffff;
+			padding: 5px;
+			font-family: Arial;
+			font-size: 15px;
+			font-weight: bold;
+			text-align: center;
+			z-index: 1;
+		}
+
+		#link {
+			width: 100%;
+			color: #ffffff;
+			padding: 5px;
+			font-family: Arial;
+			font-size: 15px;
+			text-align: center;
+			z-index: 1;
+		}
+
+		#jobstatus {
+                       	width: 100%;
+                       	color: #ffffff;
+                       	padding: 5px;
+                       	font-family: Arial;
+                       	font-size: 15px;
+                      	font-weight: bold;
+                       	text-align: center;
+                      	z-index: 1;
+		}
+
+		#jobinfo1 {
+                     	width: 100%;
+                       	color: #ff0000;
+                       	padding: 5px;
+                  	font-family: Arial;
+                    	font-size: 12px;
+                     	font-weight: bold;
+	               	text-align: center;
+                       	z-index: 1;
+		}
+
+		button {
+                       	color: rgba(127,255,255,0.75);
+                       	background:grey;
+                     	outline: 0px solid rgba(127,255,255,0.75);
+                       	border: solid 2px;
+			border-radius:5px;
+                      	padding: 5px 10px;
+                     	cursor: pointer;
+                       	color: #ffffff;
+                      	font-size: 12px;
+			font-family: Arial;
+		}
+
+		</style>
+
+		<body>
+
+		<div id="info">
+		<hr width="70%"></hr>
+
+		<h2>Similarity PCA Chemical Space</h2>
+
+		<form name="theform" method="post" action="visualizerSIM.jsp" target="_blank">
+        	<button type="submit" id="FPbtn"></button><br>
+        	<input type="hidden" name="fp" id="fp" value="">
+        	<input type="hidden" name="jobid" id="jobid" value="">
+
+		<script>
+
+	 	var data=window.location.href.split("&");
+         	var JOBid=data[0].split("jobID=")[1];
+	 	var fingerprint=data[1].split("fp=")[1];
+
+         	document.getElementById("jobid").value=JOBid;
+         	document.getElementById("fp").value=fingerprint;
+
+	 	if (fingerprint=="APfp")
+         	{
+         	document.getElementById("FPbtn").innerHTML="Atom pair Fingerprint (APfp)";
+         	}
+
+		if (fingerprint=="SMIfp")
+		{
+		document.getElementById("FPbtn").innerHTML="SMILES Fingerprint (SMIfp)";
+		}
+
+		if (fingerprint=="MQN")
+		{
+		document.getElementById("FPbtn").innerHTML="Molecular Quantum Number (MQN)";
+		}
+
+		if (fingerprint=="Xfp")
+		{
+		document.getElementById("FPbtn").innerHTML="Pharmacophore Extended Atom Pair Fingerprint (Xfp)";
+		}
+
+		if (fingerprint=="Sfp")
+		{
+		document.getElementById("FPbtn").innerHTML="Daylight Type Substructure Fingerprint (Sfp)";
+		}
+
+		if (fingerprint=="ECfp4")
+		{
+		document.getElementById("FPbtn").innerHTML="Circular Extended Connectivity Fingerprint (ECfp4)";
+		}
+
+		if (fingerprint=="MHFP")
+                {
+                document.getElementById("FPbtn").innerHTML="Probabilistic Molecular Fingerprint (MHFP)";
+                }
+
+		</script>
+	
+        	</form>
+
+		<hr width="70%"></hr>
+
+		<div id="jobstatus">
+		Job Status
+		</div>
+
+		<div id="jobinfo1">
+		</div>
+
+		</div>
+
+		<script>
+
+		loadDoc();
+		enabledButtons();
+
+		//============================================================================
+		//load the log file and update the innerhtml
+		function loadDoc() {
+                        
+			var fl= document.theform.jobid.value;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+			document.getElementById("jobinfo1").innerHTML = xhttp.responseText;
+			enabledButtons();
+			}
+
+			else
+			{
+			document.getElementById("jobinfo1").innerHTML = "Your JOB DOESN'T EXIST";
+			}
+		
+			};
+			xhttp.open("GET", "LOGs/"+fl, true);
+			xhttp.send();
+		}
+
+		//===============================================================================
+		//Enabled the button if the job is completed.
+		function enabledButtons() {
+
+			var data=document.getElementById("jobinfo1").innerHTML.split("\n");
+			for(var i=0;i<data.length;i++)
+			{
+
+			//====================================
+			var a2=data[i].indexOf("COMPLETED");
+
+			if (a2!=-1)
+			{
+			document.getElementById("FPbtn").disabled = false;
+			document.getElementById("FPbtn").style.background="rgb(27, 49, 13)";
+			}
+			//======================================
+			}
+		}
+
+		//===============================================================================
+		//Check the log file after every 5 seconds
+		setInterval(function() {
+				loadDoc();
+				enabledButtons();
+		}, 5000);
+
+                </script>
+
+</body>

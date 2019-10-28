@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="shortcut icon"  href="4.ico"/>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<title>webMolCS</title>
+		<style>
+
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #000000;
+				margin: 0;
+				font-family: Arial;
+				#overflow: hidden;
+			}
+
+			a {
+				color: #ffffff;
+			}
+
+			#info {
+				top: 10px;
+				position: absolute;
+				width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-family: Arial;
+				font-size: 30px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+			}
+
+			#menu {
+				position: absolute;
+				bottom: 20px;
+				width: 100%;
+				text-align: center;
+				color: #ffffff;
+				font-family: Arial;
+			}
+
+			.element {
+				width: 120px;
+				height: 160px;
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
+				border: 1px solid rgba(127,255,255,0.25);
+				text-align: center;
+				cursor: default;
+				font-family: Arial;
+				
+			}
+
+			.element:hover {
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+				border: 1px solid rgba(127,255,255,0.75);
+			}
+
+			.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 12px;
+					color: rgba(127,255,255,0.75);
+				}
+
+			.element .symbol {
+					position: absolute;
+					top: 40px;
+					left: 0px;
+					right: 0px;
+					font-size: 60px;
+					font-weight: bold;
+					color: rgba(255,255,255,0.75);
+					text-shadow: 0 0 10px rgba(0,255,255,0.95);
+				}
+
+			.element .details {
+					position: absolute;
+					bottom: 15px;
+					left: 0px;
+					right: 0px;
+					font-size: 12px;
+					color: rgba(127,255,255,0.75);
+				}
+
+			button2 {
+				color: rgba(127,255,255,0.75);
+				background: transparent;
+				#outline: 1px solid rgba(127,255,255,0.75);
+				border: 0px;
+				padding: 5px 10px;
+				#cursor: pointer;
+				color: #FFFF99;
+				font-size: 15px;
+				font-family: Arial;
+			}
+
+			table {
+				color: rgba(127,255,255,0.75);
+                                #outline: 1px solid rgba(127,255,255,0.75);
+                                border: 0px;
+                                padding: 5px 10px;
+                                color: #ffffff;
+                                font-size: 12px;
+                                font-family: Arial;
+			}
+
+			table th {
+				background:rgba(43,42,42,1);
+                                #outline: 1px solid rgba(127,255,255,0.75);
+                                border: 1px;
+                                padding: 5px 10px;
+                                color: #ffffff;
+                                font-size: 12px;
+                                font-family: Arial;
+			}
+
+			table td {
+                                #color: rgba(127,255,255,0.75);
+                                #outline: 1px solid rgba(127,255,255,0.75);
+                                border: 1px;
+                                padding: 5px 10px;
+                                color: #ffffff;
+                                font-size: 12px;
+                                font-family: Arial;
+				text-align:center; 
+    				vertical-align:middle;
+			}
+
+
+			button3 {
+                                color: rgba(127,255,255,0.75);
+                                background: transparent;
+                                #outline: 1px solid rgba(127,255,255,0.75);
+                                border: 0px;
+                                padding: 5px 10px;
+                                #cursor: pointer;
+                                color: #FFFFFF;
+                                font-size: 12px;
+				font-family: Arial;
+                        }
+
+			
+			button4 {
+                                color: rgba(127,255,255,0.75);
+                                background:transperant;
+                                outline: 1px solid rgba(127,255,255,0.75);
+                                border: 0px;
+                                padding: 5px 10px;
+                                cursor: pointer;
+                                color: #ffffff;
+				font-size: 12px;
+				font-family: Arial;
+                        }
+
+			button5 {
+                                color: rgba(127,255,255,0.75);
+                                background: transperant;
+                                outline: 1px solid rgba(127,255,255,0.75);
+                                border: 0px;
+                                padding: 5px 10px;
+                                cursor: pointer;
+                                color: #FFFFFF;
+                                font-size: 15px;
+                                font-family: Arial;
+                        }
+
+			button {
+
+				color: rgba(127,255,255,0.75);
+                                background:rgb(27, 49, 13);
+                                outline: 0px solid rgba(127,255,255,0.75);
+				border: solid 2px;
+                                border-radius: 5px;
+                                width:80px;
+                                height:20px;
+	
+                                padding: 0px 0px;
+                                cursor: pointer;
+                                color: #ffffff;
+                                font-size: 12px;
+                                font-family: Arial;
+				font-weight: bold;
+                        }
+
+			p{
+			font-size: 11px;
+			color: white;
+			width:80%;
+			font-family: Arial;
+			font-weight: bold;
+			}
+
+			button:hover {
+				color:red;
+			}
+
+			button4:hover {
+				color:green;
+                        }
+
+			button:active {
+				color: #000000;
+				background-color: rgba(0,255,255,0.75);
+			}
+
+			textarea {
+				color: rgba(127,255,255,0.75);
+				background: transparent;
+				outline: 1px solid rgba(127,255,255,0.75);
+				border: 0px;
+				padding: 5px 10px;
+				color: #ffffff;
+				width:50%;
+				font-family: Arial;
+				margin-top:5px;
+			}
+		</style>
+</head>
+<body>
+
+			<div id="info">
+
+			webMolCS: Demo Examples  <br><br>
+
+			<form id="frm" name="theform">
+
+			<center>
+
+                        <table id="fpTable">
+                        <tr>
+                        <th>Fingerprint</th>
+                        <th>Sim map<br> (A)</th>
+                        <th>PCA map<br> (A)</th>
+			<th>Sim map<br> (B)</th>
+                        <th>PCA map<br> (B)</th>
+			<th>Sim map<br> (C)</th>
+                        <th>PCA map<br> (C)</th>
+                        </tr>
+
+                        <tr>
+                        <td>Atom Pair Fingerprint (APfp)</td>
+			<td><button id="yourSIM.html?jobID=DemoSIMAPfp&fp=APfp" onClick="goToURL(this)">0s</button></td>
+			<td><button id="yourDIR.html?jobID=DemoPCAAPfp&fp=APfp" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMAPfpB&fp=APfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAAPfpB&fp=APfp" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMAPfpC&fp=APfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAAPfpC&fp=APfp" onClick="goToURL(this)">0s</button></td>
+
+                        </tr>
+
+                        <tr>
+                        <td>SMILES Fingerprint (SMIfp)</td>
+			<td><button id="yourSIM.html?jobID=DemoSIMSMIfp&fp=SMIfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCASMIfp&fp=SMIfp" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMSMIfpB&fp=SMIfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCASMIfpB&fp=SMIfp" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMSMIfpC&fp=SMIfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCASMIfpC&fp=SMIfp" onClick="goToURL(this)">0s</button></td>
+                        </tr>
+
+                        <tr>
+                        <td>Molecular Quantum Number (MQN)</td>
+			<td><button id="yourSIM.html?jobID=DemoSIMMQN&fp=MQN" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAMQN&fp=MQN" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMMQNB&fp=MQN" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAMQNB&fp=MQN" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMMQNC&fp=MQN" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAMQNC&fp=MQN" onClick="goToURL(this)">0s</button></td>
+                        </tr>
+
+                        <tr>
+                        <td>Pharmacophore Extended Atom Pair Fingerprint (Xfp)</td>
+			<td><button id="yourSIM.html?jobID=DemoSIMXfp&fp=Xfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAXfp&fp=Xfp" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMXfpB&fp=Xfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAXfpB&fp=Xfp" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMXfpC&fp=Xfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAXfpC&fp=Xfp" onClick="goToURL(this)">0s</button></td>
+
+                        </tr>
+
+                        <tr>
+
+                        <td>Daylight Type Substructure Fingerprint (Sfp)</td>
+			<td><button id="yourSIM.html?jobID=DemoSIMSfp&fp=Sfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCASfp&fp=Sfp" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMSfpB&fp=Sfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCASfpB&fp=Sfp" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMSfpC&fp=Sfp" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCASfpC&fp=Sfp" onClick="goToURL(this)">0s</button></td>
+
+                        </tr>
+
+                        <tr>
+                        <td>Circular Extended Connectivity FIngerprint (ECfp4)</td>
+			<td><button id="yourSIM.html?jobID=DemoSIMECfp4&fp=ECfp4" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAECfp4&fp=ECfp4" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMECfp4B&fp=ECfp4" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAECfp4B&fp=ECfp4" onClick="goToURL(this)">0s</button></td>
+
+			<td><button id="yourSIM.html?jobID=DemoSIMECfp4C&fp=ECfp4" onClick="goToURL(this)">0s</button></td>
+                        <td><button id="yourDIR.html?jobID=DemoPCAECfp4C&fp=ECfp4" onClick="goToURL(this)">0s</button></td>
+
+                        </tr>
+
+                        </table>
+
+			<p><u>Set A:</u> 5000 nearest neighbors of nicotine extracted from GDB-13.</p>
+			<p><u>Set B:</u> 1503 Aurora A kinase inhibitors from ChEMBL.</p>
+			<p><u>Set C:</u> 48 Aurora A Kinase Inhibitors reported from our group.</p>
+			<p>To access the 3D-map click on a button (corrosponding to set, fingerprint and method of your choice) in the above table.
+
+			<hr width="70%"></hr>
+			</form>
+		</div>
+
+		<script>
+
+			function goToURL(elem)
+			{
+				window.open(elem.id, "_target");
+			}
+
+		</script>
+</body>
+</html>

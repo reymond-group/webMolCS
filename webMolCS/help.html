@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="shortcut icon"  href="favicon.ico"/>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<title>HELP</title>
+		<style>
+
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #000000;
+				margin: 0;
+				font-family: Arial;
+				#overflow: hidden;
+			}
+
+			a {
+				color: #ffffff;
+			}
+
+
+			button {
+
+				color: rgba(127,255,255,0.75);
+                                background:rgb(27, 49, 13);
+                                outline: 0px solid rgba(127,255,255,0.75);
+                                border: solid 2px;
+				border-radius: 5px;
+				width:80px;
+				height:20px;
+                                padding: 0px 0px;
+                                cursor: pointer;
+                                color: #ffffff;
+                                font-size: 12px;
+                                font-family: Arial;
+				font-weight: bold;
+                        }
+
+			p{
+			font-size: 12px;
+			color: white;
+			width:80%;
+			font-family: Arial;
+			font-weight: bold;
+			text-align:center;
+			}
+
+			biglabel {
+
+			color: rgba(127,255,255,0.75);
+                         background: red;
+                         outline: px solid rgba(127,255,255,0.75);
+                         border: 0px;
+                         padding: 5px 10px;
+                         #cursor: pointer;
+                         color: #FFFFFF;
+                         font-size: 16px;
+                         font-family: Arial;
+
+
+			}
+
+			label {
+
+			 color: rgba(127,255,255,0.75);
+                         background: green;
+                         outline: px solid rgba(127,255,255,0.75);
+                         border: 0px;
+                         padding: 5px 10px;
+                         #cursor: pointer;
+                         color: #FFFFFF;
+                         font-size: 12px;
+                         font-family: Arial;
+
+			}
+
+			num {
+			color: yellow;
+                         font-size: 12px;
+                         font-family: Arial;
+
+
+			}
+
+		</style>
+</head>
+<body>
+
+		<div align=center>
+		<h1>
+		<bigLabel>Input and job submission</bigLabel>
+		</h1>
+		<label> A) Input Format:</label>
+		<p> 
+		<num>1)</num> webMolCS takes the SMILES of molecules as input.<br><br>
+		<num>2)</num> You can input upto 5000 molecules.<br><br>
+	        <num>3)</num> For each molecule in addition to the SMILES string "Name" must be provided.<br><br>
+		<num>4)</num> The name of the molecule should be free of spaces or any additional special characters.<br><br>
+		<num>5)</num> The SMILES string of a molecule and its name must be seperated by space or tab.<br><br>
+		<num>6)</num> The valid input looks like this:<br><br> 
+		C1CCCCCC1 testMol1<br>
+		CCCCCC testMol2<br><br>
+		<num>7)</num> The first molecules in your list will be used as reference for similarity calculations (see section C). <br><br>
+		<num>8)</num> Optionally in your input you can provide any numerical values (one for each molecule), which you may want to use for color coding of maps (see section C). These numercial values must represent third column in your input. The "Numerical value" must be seperated from "Name" by space or tag.<br><br>
+		<num>9)</num> The valid input looks like this:<br><br>
+		C1CCCCCC1 testMol1 0.02<br>
+                CCCCCC testMol2 0.4<br><br>
+		</p>
+
+		<label>B) Two Ways to Provide Input:</label>
+		<p>
+                <num>1)</num> Copy-paste: You can simply copy-paste your input into the provided text box. Each line in the text-box must corresponds to one molecule.<br><br>
+                <num>2)</num> Browse file: You can select the input file of your molecules using Choose file option. Each line in your input file must corresponds to one molecule.<br><br>
+		</p>
+
+		<label>C) Your Input and Color-Coding of Maps:</label>
+		<p>
+                In webMolCS maps are color coded according to three different criterias:<br><br>
+		<num>FP-Rank:</num> First molecule in the input molecule list will be considered as query. Later, the molecules in the input list will be sorted according to their similarity (calculated using fingerprint selected by user) to the query molecule. The rank of molecules in this similarity sorted list will be use for color coding.<br><br>
+
+		<num>List-Rank:</num> The rank of molecules calculated based on their order in the list provided by user will be use for color coding.<br><br>
+
+		<num>ActualVals:</num> Herein the actual values provided by user will be use for color-coding.<br><br>
+
+		Make sure that your input is sorted according to the criteria you are interested in. 
+		</p>
+
+		<label>D) Job Submission:</label>
+		<p>
+		After providing the input molecule list, click on the button corresponding to a "Fingerprint" and a "Method" of your choice. 
+		</p>
+		<hr>
+
+		<h1>
+                <bigLabel>3D-map and Visualization Functions</bigLabel>
+                </h1>
+
+		<p> 
+		<num>1) Map colors:</num> colors are based on rank of compounds in sorted database and actual values provided by user in input.<br><br>
+
+		<num>2) FP-Rank:</num> The first molecule in the list will be considered as reference molecule for similarity calculations.<br><br>
+
+		<num>3) List-Rank:</num> Compounds were ranked based on their appearence in the list provided by the user.<br><br>
+
+		<num>4) ActualVals:</num> The values provided as third column in the input list will be used for color-coding.<br><br>
+
+		<num>5) PCs:</num> % variance covered by principal component 1, 2 and 3 (PC1-3).<br><br>
+
+		<num>6) Axes:</num> show or hide axes.<br><br>
+
+		<num>7) MST:</num> show or hide minmum spanning tree.<br><br>
+
+		<num>8) Point size:</num> increase or decrease size of points.<br><br>
+
+		<num>9) Set as pivot point:</num> rotation and camera lookup point set to the selected (locked) point in 3D-map.<br><br>
+
+		<num>10) Reset view:</num> restore the map to starting position and reset the point size.<br><br>
+
+		<num>11) No. of cpds:</num> set the number of compounds for automatic selection.<br><br>
+
+		<num>12) Automatic cpd list:</num> automatically select the compounds from database.<br><br>
+
+		<num>13) ShowList:</num> shows the list of compounds selected by user.<br><br>
+
+		<num>14) Add the compound to selection list:</num> first lock the point by mouse double click, then click on molecule ID to put it in the selection list.<br><br>
+
+		<num>15) ExportCoord:</num> export the coordinates, SMILES string and IDs for all the compounds.<br><br>
+
+		<num>16) Where is the reference or query molecule?:</num> The point corresponding to the query molecule is blinking (white to red) constantly in 3D-map. 
+		</p>
+
+		<label>Additional Functions</label><br><br>
+		<p>
+
+		<num>Select or lock point:</num> mouse double click.<br><br>
+
+		<num>Unselect or unlock point:</num> mouse double click.<br><br>
+
+		<num>Zoom:</num> mouse middle scroll.<br><br>
+
+		<num>Rotation:</num> press mouse left button and dragg.<br><br>
+
+		<num>Lock mouse over:</num> double click any where.<br><br>
+</p>
+
+</div>	
+</body>
+</html>
